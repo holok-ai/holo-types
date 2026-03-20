@@ -1,4 +1,4 @@
-# @holokai/types
+# @holokai/holo-types
 
 ## 1.3.1
 
@@ -68,6 +68,6 @@
 
 ### Minor Changes
 
-- Broke up SDK to have dependency-less @holokai/types. Reorganized types and interfaces. Fixed up some types vs
+- Broke up SDK to have dependency-less @holokai/holo-types. Reorganized types and interfaces. Fixed up some types vs
   interfaces. Prefixed true interfaces that are used to describe classes vs TypeScript interfaces used to just describe
   an object.

@@ -14,30 +14,33 @@ export interface HttpRequestDetails {
 }
 
 export interface HoloWorkerRequest {
-    organizationId: string;
-    application?: Application;
-    provider: Provider;
-    protocol: Protocol;
-    sourceId: string;
-    appSlug?: string;
-    userId?: string;
-    threadId?: string;
-    branchId?: string;
-    requestId: string;
-    payload: any;
-    timestamp: string;
-    isStreaming: boolean;
-    systemPrompt?: Prompt;
-    options?: Record<string, any>;
-    guards?: Prompt[];
-    guardResult?: GuardResult;
-    errors?: string[];
+    // Required
     httpRequestDetails: HttpRequestDetails;
-    isPassthrough?: boolean;
-    passthroughPath?: string;
+    isStreaming: boolean;
+    organizationId: string;
+    payload: any;
+    protocol: Protocol;
+    provider: Provider;
+    requestId: string;
+    sourceId: string;
+    timestamp: string;
+
+    // Optional
+    appSlug?: string;
+    application?: Application;
+    branchId?: string;
     clientIdentifier?: string;
-    tokenType?: string;
+    errors?: string[];
+    guardResult?: GuardResult;
+    guards?: Prompt[];
     isHoloNative?: boolean;
+    isPassthrough?: boolean;
+    options?: Record<string, any>;
+    passthroughPath?: string;
     providerEvent?: ProviderDoneEvent | ProviderErrorEvent;
+    systemPrompt?: Prompt;
+    threadId?: string;
+    tokenType?: string;
+    userId?: string;
     workerId?: string;
 }

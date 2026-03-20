@@ -4,7 +4,7 @@ export {Evaluator} from "./evaluator";
 export {EvaluatorData} from "./evaluator.data";
 export {Model} from "./model";
 export {Notification} from "./notification";
-export {AnalysisResult} from "./analysisResult";
+export {AnalysisResult} from "./analysis.result";
 export {
     type ProviderResponse,
     type ProviderResponseView,
@@ -21,7 +21,7 @@ export {HoloToken} from "./holo.token";
 export {Organization} from "./organization";
 export {Prompt} from "./prompt";
 export {type Plugin} from "./plugin";
-export {type Protocol, ProtocolCapability, type ProtocolDef} from "./protocol";
+export {type Protocol, ProtocolCapability} from "./protocol";
 export {type Server, ServerType} from "./server";
 export {
     type PricingPlan,

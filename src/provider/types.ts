@@ -1,7 +1,8 @@
 import type {HoloMessage, HoloRequest, HoloResponse, HoloStreamChunk} from "../holo";
 import type {HoloWorkerRequest, WorkerResponseEnvelope} from "../worker";
-import type {Protocol, ProtocolCapability, ProviderRequest, ProviderResponse} from "../entities";
+import type {ProviderRequest, ProviderResponse} from "../entities";
 import {IProviderPlugin} from "../plugin";
+import type {ProviderProtocol} from "./protocol";
 
 export const ProviderEventType = {
     STREAM_EVENT: 'stream_event',
@@ -68,7 +69,7 @@ export type ProviderEvent =
     | ProviderErrorEvent;
 
 export interface ProviderContext {
-    protocol: Protocol;
+    protocol: ProviderProtocol;
     headers?: Record<string, string | string[]>;
     query?: Record<string, string>;
     emitStreamEvent: (event: any) => void;
@@ -100,15 +101,6 @@ export interface ModelInfo {
     format?: string;
 
     [key: string]: any;
-}
-
-export interface AIRequestStat {
-    type: ProtocolCapability;
-    startTime: number;
-    endTime: number;
-    duration: number;
-    success: number;
-    error: number;
 }
 
 export interface IResponseFactory {

@@ -1,4 +1,4 @@
-import {ProtocolDef} from "../entities";
+import type {ProviderProtocol} from "../provider/protocol";
 
 export const RouteHandler = {
     MODELS: 'models',
@@ -17,6 +17,6 @@ export interface RouteDefinition {
     paths: string[];
     method: 'GET' | 'POST';
     handler: RouteHandler;
-    protocol: ProtocolDef;
+    protocol: ProviderProtocol;
     streaming?: boolean;
 }

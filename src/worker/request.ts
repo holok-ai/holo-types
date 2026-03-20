@@ -1,5 +1,6 @@
-import {Application, Prompt, Protocol, Provider} from "../entities";
-import type {ProviderDoneEvent, ProviderErrorEvent} from "../provider";
+import {Application, Prompt, Provider} from "../entities";
+import type {ProviderDoneEvent, ProviderErrorEvent} from "../provider/types";
+import type {ProviderProtocol} from "../provider/protocol";
 
 export interface GuardResult {
     passed: boolean;
@@ -19,7 +20,7 @@ export interface HoloWorkerRequest {
     isStreaming: boolean;
     organizationId: string;
     payload: any;
-    protocol: Protocol;
+    protocol: ProviderProtocol;
     provider: Provider;
     requestId: string;
     sourceId: string;

@@ -1,11 +1,12 @@
-import {Application, Protocol, Provider} from "../entities";
+import {Application, Provider} from "../entities";
+import type {ProviderProtocol} from "../provider/protocol";
 
 export interface WorkerEnvelopeBase {
     request_id: string;
     organization_id: string;
     application?: Application;
     provider: Provider;
-    protocol: Protocol;
+    protocol: ProviderProtocol;
     user_id?: string;
     access_model: string;
     thread_id?: string;

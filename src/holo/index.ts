@@ -5,3 +5,7 @@ export * from './responses';
 export * from './tools';
 export * from './errors';
 export * from './threads';
+export * from './generate';
+export * from './embed';
+export * from './metrics';
+export * from './models';

@@ -1,4 +1,14 @@
-import type {HoloMessage, HoloRequest, HoloResponse, HoloStreamChunk} from "../holo";
+import type {
+    HoloCountTokensParams,
+    HoloEmbedParams,
+    HoloFinishReason,
+    HoloGenerateParams,
+    HoloMessage,
+    HoloRequest,
+    HoloResponse,
+    HoloStreamChunk,
+    HoloUsage,
+} from "../holo";
 import type {HoloWorkerRequest, WorkerResponseEnvelope} from "../worker";
 import type {ProviderRequest, ProviderResponse} from "../entities";
 import {IProviderPlugin} from "../plugin";
@@ -58,6 +68,7 @@ export type ProviderDoneEvent = {
     seq: number;
     message: any;
     text: string;
+    holoResponse?: HoloResponse;
     metrics: ProviderEventMetrics;
     ts: number;
 };
@@ -110,6 +121,10 @@ export interface IResponseFactory {
 export interface IAuditor {
     readonly provider: string;
 
+    mapFinishReason(nativeResponse: any, protocolName?: string): HoloFinishReason;
+
+    mapUsage(nativeResponse: any, protocolName?: string): HoloUsage;
+
     auditRequest(workerRequest: HoloWorkerRequest): Promise<ProviderRequest>;
 
     createWorkerResponseEnvelope(workerRequest: HoloWorkerRequest, workerId?: string): Promise<WorkerResponseEnvelope>;
@@ -134,6 +149,14 @@ export interface IProviderTranslator {
     fromHoloResponse(response: HoloResponse): Promise<Partial<any>>;
 
     fromHoloStreamChunks(chunks: HoloStreamChunk[]): Promise<unknown>;
+
+    fromHoloGenerateRequest?(request: HoloGenerateParams): Promise<any>;
+
+    fromHoloEmbedRequest?(request: HoloEmbedParams): Promise<any>;
+
+    toHoloEmbedResponse?(response: any): Promise<{ model: string; embeddings: number[][]; usage?: any }>;
+
+    fromHoloCountTokensRequest?(request: HoloCountTokensParams): Promise<any>;
 }
 
 export interface TranslateOptions {

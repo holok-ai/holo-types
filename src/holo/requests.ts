@@ -49,4 +49,6 @@ export interface HoloRequest {
     branch?: string;
     /** Application slug — selects the system prompt, guards, and default model. */
     application?: string;
+    /** Target a specific protocol by name (e.g. 'openai.chatCompletions'). */
+    protocol?: string;
 }

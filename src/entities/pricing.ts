@@ -48,6 +48,12 @@ export interface PricingSheetModel extends BaseEntity {
     extended_input_cost?: number;
     extended_output_cost?: number;
     token_costs?: Record<string, number>;
+    dictionary_id?: string;
+    model_id?: string;
+    normalized_model_name?: string;
+    match_status?: string;
+    match_confidence?: number;
+    match_method?: string;
 }
 
 export interface CostResult {

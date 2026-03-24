@@ -136,6 +136,8 @@ export interface IProviderPlugin<TProvider = IProvider> extends IPlugin {
 
     getPricingSheets?(): Map<string, PluginPricingSheet>;
 
+    getPricingModelIds?(): PricingModelId[];
+
     calculateCost(tokens: Record<string, number>, pricing: PricingSheetModel): CostResult;
 
     getProtocolByCapability(capability: ProtocolCapability): string | undefined;

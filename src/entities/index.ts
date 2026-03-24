@@ -3,6 +3,18 @@ export {Provider} from "./provider";
 export {Evaluator} from "./evaluator";
 export {EvaluatorData} from "./evaluator.data";
 export {Model} from "./model";
+export {ModelDictionary, type ModelDictionaryStatus, type ModelKind} from "./model-dictionary";
+export {ModelDictionaryAlias, type ModelAliasType} from "./model-dictionary-alias";
+export {
+    type MatchStatus,
+    type MatchMethod,
+    type MatchCandidate,
+    type MatchMetadata,
+    type AmbiguousMatchMetadata,
+    type ResolvedMatchMetadata,
+    type ModelMatchResult,
+    type ModelMatchOverride
+} from "./model-match";
 export {Notification} from "./notification";
 export {AnalysisResult} from "./analysis.result";
 export {

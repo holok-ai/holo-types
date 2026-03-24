@@ -114,6 +114,15 @@ export interface ModelInfo {
     [key: string]: any;
 }
 
+export interface DiscoveredModel {
+    name: string;
+    accessModel: string;
+    description?: string;
+    version?: string;
+    contextLength?: number;
+    metadata?: Record<string, any>;
+}
+
 export interface IResponseFactory {
     createError(message: string, code?: string): any;
 }
@@ -198,6 +207,8 @@ export interface IProvider {
     plugin: IProviderPlugin;
 
     getModels(allowedModels: string[] | true): Promise<any>;
+
+    discoverModels(): Promise<DiscoveredModel[]>;
 
     getModelNameFromRequest(payload: any): Promise<string | undefined>;
 

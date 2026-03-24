@@ -160,6 +160,10 @@ export interface HoloModelInfo {
     provider_family: string;
     context_length?: number;
     capabilities: string[];
+    modality?: string;
+    input_modalities?: string[];
+    output_modalities?: string[];
+    supported_parameters?: string[];
 }
 
 /** Application metadata returned by the applications API. */

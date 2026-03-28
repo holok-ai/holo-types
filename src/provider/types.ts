@@ -17,6 +17,7 @@ import type {ProviderProtocol} from "./protocol";
 export const ProviderEventType = {
     STREAM_EVENT: 'stream_event',
     TEXT_DELTA: 'text_delta',
+    TOOL_CALL_DELTA: 'tool_call_delta',
     DONE: 'done',
     ERROR: 'error'
 } as const;
@@ -62,6 +63,21 @@ export type ProviderDeltaEvent = {
     ts: number;
 };
 
+export interface ToolCallDelta {
+    id?: string;
+    name?: string;
+    arguments_delta?: string;
+}
+
+export type ProviderToolCallDeltaEvent = {
+    type: typeof ProviderEventType.TOOL_CALL_DELTA;
+    requestId: string;
+    seq: number;
+    index: number;
+    delta: ToolCallDelta;
+    ts: number;
+};
+
 export type ProviderDoneEvent = {
     type: typeof ProviderEventType.DONE;
     requestId: string;
@@ -76,6 +92,7 @@ export type ProviderDoneEvent = {
 export type ProviderEvent =
     | ProviderStreamEvent
     | ProviderDeltaEvent
+    | ProviderToolCallDeltaEvent
     | ProviderDoneEvent
     | ProviderErrorEvent;
 
@@ -85,6 +102,7 @@ export interface ProviderContext {
     query?: Record<string, string>;
     emitStreamEvent: (event: any) => void;
     emitTextDelta: (text?: string | null) => void;
+    emitToolCallDelta: (index: number, delta: ToolCallDelta) => void;
 }
 
 export interface RunHandle<Final> {

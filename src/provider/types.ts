@@ -145,12 +145,26 @@ export interface IResponseFactory {
     createError(message: string, code?: string): any;
 }
 
+export const TokenCountType = {
+    INPUT: 'input',
+    OUTPUT: 'output',
+} as const;
+
+export type TokenCountType = typeof TokenCountType[keyof typeof TokenCountType];
+
+export interface TokenCountOptions {
+    type?: TokenCountType | undefined;
+    model?: string | undefined;
+}
+
 export interface IAuditor {
     readonly provider: string;
 
     mapFinishReason(nativeResponse: any, protocolName?: string): HoloFinishReason;
 
     mapUsage(nativeResponse: any, protocolName?: string): HoloUsage;
+
+    countTokens(text: string, opts?: TokenCountOptions): number;
 
     auditRequest(workerRequest: HoloWorkerRequest): Promise<ProviderRequest>;
 

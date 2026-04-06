@@ -6,7 +6,11 @@ export interface Plugin extends BaseEntity {
     name: string;
     type: PluginType;
     version: string;
-    is_default: boolean;
     default_pricing_plan_id?: string;
     active: boolean;
+    tarball?: Buffer;
+    sha256?: string;
+    size_bytes?: number;
+    source?: string;
+    installed_by?: string;
 }

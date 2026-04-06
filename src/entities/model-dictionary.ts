@@ -2,7 +2,17 @@ import {BaseEntity} from "./base";
 
 export type ModelDictionaryStatus = 'active' | 'preview' | 'deprecated' | 'shutdown';
 
-export type ModelKind = 'chat' | 'completion' | 'reasoning' | 'embedding' | 'image' | 'audio' | 'moderation' | 'rerank' | 'transcription' | 'tts';
+export type ModelKind =
+    'chat'
+    | 'completion'
+    | 'reasoning'
+    | 'embedding'
+    | 'image'
+    | 'audio'
+    | 'moderation'
+    | 'rerank'
+    | 'transcription'
+    | 'tts';
 
 export interface ModelDictionary extends BaseEntity {
     canonical_id: string;

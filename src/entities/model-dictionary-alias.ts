@@ -1,6 +1,14 @@
 import {BaseEntity} from "./base";
 
-export type ModelAliasType = 'official' | 'provider_api' | 'reseller' | 'runtime' | 'display' | 'shorthand' | 'legacy' | 'heuristic';
+export type ModelAliasType =
+    'official'
+    | 'provider_api'
+    | 'reseller'
+    | 'runtime'
+    | 'display'
+    | 'shorthand'
+    | 'legacy'
+    | 'heuristic';
 
 export interface ModelDictionaryAlias extends BaseEntity {
     dictionary_id: string;

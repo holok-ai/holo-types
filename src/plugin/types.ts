@@ -3,10 +3,12 @@ import type {IProvider, IProviderTranslator, IWireAdapter, ProviderCapabilities,
 import type {RouteDefinition, RouteHandler} from "../routing";
 import type {INotificationService} from "../notification";
 import type {CostResult, PricingSheetModel, ProtocolCapability} from "../entities";
+import type {HoloWorkerRequest} from "../worker";
 import {Plugin} from "../entities";
 
 export const PluginType = {
-    PROVIDER: 'PROVIDER'
+    PROVIDER: 'PROVIDER',
+    DATASTORE: 'DATASTORE',
 } as const;
 
 export type PluginType = typeof PluginType[keyof typeof PluginType];
@@ -141,4 +143,46 @@ export interface IProviderPlugin<TProvider = IProvider> extends IPlugin {
     calculateCost(tokens: Record<string, number>, pricing: PricingSheetModel): CostResult;
 
     getProtocolByCapability(capability: ProtocolCapability): string | undefined;
+}
+
+// --- Datastore Plugin Types ---
+
+export interface DatastoreConfigField {
+    name: string;
+    label: string;
+    type: 'string' | 'number' | 'boolean' | 'password' | 'select';
+    required: boolean;
+    default?: any;
+    options?: { label: string; value: string }[];
+    description?: string;
+    group?: string;
+    sensitive?: boolean;
+}
+
+export interface IDatastorePlugin extends IPlugin {
+    getConfigSchema(): DatastoreConfigField[];
+    getDefaultMapping(): AuditFieldMapping;
+    createInstance(config: Record<string, any>): Promise<IDatastoreInstance>;
+}
+
+export interface IDatastoreInstance {
+    connect(): Promise<void>;
+    disconnect(): Promise<void>;
+    isConnected(): boolean;
+    write(table: string, record: Record<string, any>): Promise<{ id?: string }>;
+    updateResponseCost?(responseTable: string, responseId: string, cost: number): Promise<void>;
+    testConnection(): Promise<{ ok: boolean; error?: string }>;
+}
+
+export interface AuditFieldMapping {
+    request?: { table: string; fields: Record<string, string> };
+    response?: { table: string; fields: Record<string, string> };
+    cost?: { table: string; fields: Record<string, string> };
+}
+
+export interface NormalizedAuditData {
+    request: Record<string, any>;
+    response?: Record<string, any>;
+    cost?: Record<string, any>;
+    _raw: HoloWorkerRequest;
 }

@@ -33,6 +33,7 @@ export {HoloToken} from "./holo.token";
 export {Organization} from "./organization";
 export {Prompt} from "./prompt";
 export {type Plugin} from "./plugin";
+export {type AuditDatastore} from "./audit.datastore";
 export {type Protocol, ProtocolCapability} from "./protocol";
 export {type Server, ServerType} from "./server";
 export {

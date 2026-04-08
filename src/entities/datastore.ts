@@ -1,6 +1,6 @@
 import type {AuditFieldMapping} from "../plugin";
 
-export interface AuditDatastore {
+export interface Datastore {
     id: string;
     name: string;
     plugin_id: string;
@@ -8,7 +8,7 @@ export interface AuditDatastore {
     connection_config: Record<string, any>;
     mapping: AuditFieldMapping;
     enabled: boolean;
-    is_default: boolean;
+    active: boolean;
     created_at: string;
     updated_at: string;
 }

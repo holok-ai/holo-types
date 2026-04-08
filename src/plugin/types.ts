@@ -3,8 +3,8 @@ import type {IProvider, IProviderTranslator, IWireAdapter, ProviderCapabilities,
 import type {RouteDefinition, RouteHandler} from "../routing";
 import type {INotificationService} from "../notification";
 import type {CostResult, PricingSheetModel, ProtocolCapability} from "../entities";
-import type {HoloWorkerRequest} from "../worker";
 import {Plugin} from "../entities";
+import type {HoloWorkerRequest} from "../worker";
 
 export const PluginType = {
     PROVIDER: 'PROVIDER',
@@ -161,16 +161,23 @@ export interface DatastoreConfigField {
 
 export interface IDatastorePlugin extends IPlugin {
     getConfigSchema(): DatastoreConfigField[];
+
     getDefaultMapping(): AuditFieldMapping;
+
     createInstance(config: Record<string, any>): Promise<IDatastoreInstance>;
 }
 
 export interface IDatastoreInstance {
     connect(): Promise<void>;
+
     disconnect(): Promise<void>;
+
     isConnected(): boolean;
+
     write(table: string, record: Record<string, any>): Promise<{ id?: string }>;
+
     updateResponseCost?(responseTable: string, responseId: string, cost: number): Promise<void>;
+
     testConnection(): Promise<{ ok: boolean; error?: string }>;
 }
 

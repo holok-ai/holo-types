@@ -1,3 +1,4 @@
+import type {JSONSchema7} from 'json-schema';
 import type {HoloLogger} from "../logger";
 import type {IProvider, IProviderTranslator, IWireAdapter, ProviderCapabilities, WireAdapterParams} from "../provider";
 import type {RouteDefinition, RouteHandler} from "../routing";
@@ -49,6 +50,11 @@ export interface PluginContext {
     notifications?: INotificationService;
 }
 
+export interface PluginSchema {
+    connection: JSONSchema7 & { sensitive?: string[] };
+    parameters?: JSONSchema7;
+}
+
 export interface IPlugin {
     readonly manifest: PluginManifest;
     readonly name: string;
@@ -62,6 +68,8 @@ export interface IPlugin {
     destroy(): Promise<void>;
 
     getState(): PluginState;
+
+    getSchema?(): PluginSchema;
 }
 
 export interface IPluginRegistry<T extends IPlugin> {

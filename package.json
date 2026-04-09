@@ -86,5 +86,8 @@
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
     "type-check": "tsc --noEmit",
     "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@types/json-schema": "^7.0.15"
   }
 }

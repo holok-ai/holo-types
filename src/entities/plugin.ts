@@ -13,4 +13,5 @@ export interface Plugin extends BaseEntity {
     size_bytes?: number;
     source?: string;
     installed_by?: string;
+    schema?: Record<string, any>;
 }

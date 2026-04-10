@@ -51,7 +51,7 @@ export interface PluginContext {
 }
 
 export interface PluginSchema {
-    connection: JSONSchema7 & { sensitive?: string[] };
+    connection: JSONSchema7 & { encrypted?: string[] };
     parameters?: JSONSchema7;
 }
 
@@ -155,21 +155,7 @@ export interface IProviderPlugin<TProvider = IProvider> extends IPlugin {
 
 // --- Datastore Plugin Types ---
 
-export interface DatastoreConfigField {
-    name: string;
-    label: string;
-    type: 'string' | 'number' | 'boolean' | 'password' | 'select';
-    required: boolean;
-    default?: any;
-    options?: { label: string; value: string }[];
-    description?: string;
-    group?: string;
-    sensitive?: boolean;
-}
-
 export interface IDatastorePlugin extends IPlugin {
-    getConfigSchema(): DatastoreConfigField[];
-
     getDefaultMapping(): AuditFieldMapping;
 
     createInstance(config: Record<string, any>): Promise<IDatastoreInstance>;

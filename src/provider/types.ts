@@ -138,6 +138,8 @@ export interface DiscoveredModel {
     description?: string;
     version?: string;
     contextLength?: number;
+    inputModalities?: string[];
+    outputModalities?: string[];
     metadata?: Record<string, any>;
 }
 

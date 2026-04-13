@@ -164,6 +164,7 @@ export interface HoloModelInfo {
     input_modalities?: string[];
     output_modalities?: string[];
     supported_parameters?: string[];
+    metadata?: Record<string, any>;
 }
 
 /** Application metadata returned by the applications API. */

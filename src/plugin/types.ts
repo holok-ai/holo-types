@@ -151,6 +151,8 @@ export interface IProviderPlugin<TProvider = IProvider> extends IPlugin {
     calculateCost(tokens: Record<string, number>, pricing: PricingSheetModel): CostResult;
 
     getProtocolByCapability(capability: ProtocolCapability): string | undefined;
+
+    getTestModels?(): { chat?: string; embed?: string };
 }
 
 // --- Datastore Plugin Types ---

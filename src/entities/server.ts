@@ -5,7 +5,6 @@ export const ServerType = {
     API: 'api',
     AUDIT: 'audit',
     WORKER: 'worker',
-    EVALUATOR: 'evaluator',
     BATCH: 'batch',
 }
 

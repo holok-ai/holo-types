@@ -2,7 +2,6 @@ import {BaseEntity} from "./base";
 import {Provider} from "./provider";
 import {Model} from "./model";
 import {Prompt} from "./prompt";
-import {Evaluator} from "./evaluator";
 
 export type AccessLevel = 'team' | 'organization' | 'anonymous';
 
@@ -18,5 +17,4 @@ export interface Application extends BaseEntity {
     models?: Model[];
     system_prompt?: Prompt;
     guards?: Prompt[];
-    evaluators?: Evaluator[];
 }

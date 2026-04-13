@@ -1,7 +1,5 @@
 export * from './base';
 export {Provider} from "./provider";
-export {Evaluator} from "./evaluator";
-export {EvaluatorData} from "./evaluator.data";
 export {Model} from "./model";
 export {ModelDictionary, type ModelDictionaryStatus, type ModelKind} from "./model-dictionary";
 export {ModelDictionaryAlias, type ModelAliasType} from "./model-dictionary-alias";

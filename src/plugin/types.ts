@@ -53,6 +53,7 @@ export interface PluginContext {
 export interface PluginSchema {
     connection: JSONSchema7 & { encrypted?: string[] };
     parameters?: JSONSchema7;
+    defaultMapping?: AuditFieldMapping;
 }
 
 export interface IPlugin {

@@ -185,7 +185,7 @@ export interface AuditFieldMapping {
 }
 
 export interface NormalizedAuditData {
-    request: Record<string, any>;
+    request?: Record<string, any>;
     response?: Record<string, any>;
     cost?: Record<string, any>;
     _raw: HoloWorkerRequest;

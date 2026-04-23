@@ -5,6 +5,7 @@ export interface Datastore {
     name: string;
     plugin_id: string;
     organization_id?: string;
+    api_credential_id?: string;
     connection_config: Record<string, any>;
     mapping: AuditFieldMapping;
     enabled: boolean;
